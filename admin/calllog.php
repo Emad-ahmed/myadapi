@@ -77,11 +77,13 @@ if (!isset($view)) {
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $inputTime = $row["time_date"];
+                    $convertedTime = date('M j, Y g:i A', strtotime($inputTime));
                     echo "<tr>";
                     echo "<td>{$row['id']}</td>";
                     echo "<td>{$row['device_id']}</td>";
                     echo "<td>{$row['from_call']} {$row['name']}</td> ";
-                    echo "<td>{$row['time_date']}</td>";
+                    echo "<td>$convertedTime</td>";
                     echo "<td>{$row['call_duration']}</td>";
                     echo "<td>{$row['call_type']}</td>"; 
                     echo "</tr>";
@@ -92,12 +94,17 @@ if (!isset($view)) {
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
+                        $inputTime = $row["time_date"];
+                        $convertedTime = date('M j, Y g:i A', strtotime($inputTime));
+                        $seconds = $row['call_duration'];
+                        $minutes = $seconds / 60;
+                        $minutes = number_format($minutes, 2);
                         echo "<tr>";
                         echo "<td>{$row['id']}</td>";
                         echo "<td>{$row['device_id']}</td>";
                         echo "<td>{$row['from_call']} {$row['name']}</td> ";
-                        echo "<td>{$row['time_date']}</td>";
-                        echo "<td>{$row['call_duration']}</td>";
+                        echo "<td>$convertedTime</td>";
+                        echo "<td>$minutes min</td>";
                         echo "<td>{$row['call_type']}</td>"; 
                         echo "</tr>";
                     }

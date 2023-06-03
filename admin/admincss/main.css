@@ -494,28 +494,6 @@ main h2{
 }
 
 
-@media (max-width: 1200px) {
-  
-  main{
-    overflow-x: auto;
-  }
-  .d-flex
-  {
-    display: block !important;
-    text-align: center !important;
-  }
-
-  .d-flex .btn-all{
-    width: 100% !important;
-    margin-bottom: 1rem !important;
-  }
-
-  .d-flex select{
-    width: 100% !important;
-    margin-bottom: 1rem !important;
-  }
-}
-
 th{
   background: #145B75;
   color: white !important;
@@ -544,3 +522,63 @@ table
   border-right: 1px solid white !important;
   text-align: center;
 }
+
+
+#showdata .formsms
+{
+    background: white;
+    border: 1px solid grey;
+    border-radius: 0.7rem;
+    width: 80%  !important;
+    
+}
+
+
+
+.convertform
+{
+
+  position: relative !important;
+  left: 200% !important;
+}
+
+.imgshow
+{
+  margin-right: 2rem !important;
+}
+
+@media (max-width: 1200px) {
+  
+  .imgshow
+  {
+    margin-right: 0rem !important;
+    margin: 1rem !important;
+  }
+
+  .convertform
+  {
+
+    position: relative !important;
+    left: 10% !important;
+  }
+
+  main{
+    overflow-x: auto;
+  }
+  .d-flex
+  {
+    display: block !important;
+    text-align: center !important;
+  }
+
+  .d-flex .btn-all{
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .d-flex select{
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
