@@ -15,7 +15,7 @@ $imageName = $image['name'];
 
 for ($x = 0; $x < sizeof($imageName); $x++) {
     $imageLocation = $image['tmp_name'][$x];
-    $imageDes = 'Images/'.$imageName[$x];
+    $imageDes = 'images/'.$imageName[$x];
     move_uploaded_file($imageLocation, $imageDes);
 
     $insert_query =  "INSERT INTO `profimage`(`user_id`, `image`) VALUES ('$user_id','$imageDes')";

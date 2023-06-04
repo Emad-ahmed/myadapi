@@ -336,14 +336,14 @@ label.error {
 
   nav[role="navigation"] {
     position: fixed;
-    width: 200px;
+    width: 290px;
     top: 75px;
     bottom: 0px;
     left: 0px;
   }
 
   main[role="main"] {
-    margin: 75px 0 40px 200px;
+    margin: 75px 0 40px 300px;
   }
   main[role="main"]:after {
     content: "";
@@ -529,17 +529,35 @@ table
     background: white;
     border: 1px solid grey;
     border-radius: 0.7rem;
-    width: 80%  !important;
+    width: 100%  !important;
+    
+}
+
+#mydata .formsms
+{
+    background: white;
+    border: 1px solid grey;
+    border-radius: 0.7rem;
+    width: 100%  !important;
     
 }
 
 
+.myconvert .convertform {
+  margin-left: 27rem !important;
+}
 
-.convertform
-{
 
-  position: relative !important;
-  left: 200% !important;
+@media (max-width: 768px) {
+  .myconvert .convertform {
+    margin-left: 15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .myconvert .convertform {
+    margin-left: 10rem;
+  }
 }
 
 .imgshow
@@ -555,12 +573,7 @@ table
     margin: 1rem !important;
   }
 
-  .convertform
-  {
-
-    position: relative !important;
-    left: 10% !important;
-  }
+ 
 
   main{
     overflow-x: auto;

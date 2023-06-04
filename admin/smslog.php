@@ -30,6 +30,12 @@ if (isset($_GET['id'])) {
         overflow : auto !important;
     }
 
+    .col-lg-8
+    {
+        height:35rem !important;
+        overflow : auto !important;
+    }
+
 </style>
    
 <main role="main">
@@ -134,11 +140,42 @@ if (isset($_GET['id'])) {
     ?>
 </div>
 
-        <div class="col-lg-7">
+        <div class="col-lg-8">
         <div class="col-12"> 
                 <div id="showdata">
                 </div>
+
+                <div id="mydata">
+                    <?php
+                        include 'config.php';
+                        $sql = "SELECT * FROM user, smslog where user.id = smslog.user_id  ORDER BY user.id DESC";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                        while($row=mysqli_fetch_assoc($result))
+                        {
+                            $inputTime = $row["send_time"];
+                            $convertedTime = date('M j, Y g:i A', strtotime($inputTime));
+                            echo "
+                             <div class='formsms p-3 d-flex mb-4'>
+                                <div class='imgshow'>
+                                    <img src='img/profile2.png' alt=''> 
+                                </div>
+
+                                <div class='myconvert'>
+                                    <h4>{$row["from_sms"]}</h2>
+                                    <p>{$row["body"]}</p>
+                                    
+                                    <p class='convertform'>$convertedTime</p>
+                                    
+                                </div>
+                                </div>
+                            ";
+                        }
+                    }
+                    ?>
+                </div>
         </div>
+
 
         </div>
     </div>
@@ -146,12 +183,13 @@ if (isset($_GET['id'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 
-$(document).ready(function() {
+    $(document).ready(function() {
   // Add click event listener to anchor tags with class 'mysms'
-  $(document).on("click", ".mysms", function() {
+    $(document).on("click", ".mysms", function() {
     var student_id = $(this).data("id");
+    $("#mydata").css("display", "none");
     var clickedCard = $(this); // Store the clicked card element
-
+    
     $.ajax({
       type: "GET",
       url: "showsmslog.php",
@@ -159,7 +197,8 @@ $(document).ready(function() {
       success: function(data) {
         $("#showdata").html(data);
         $(".mysms").css("background-color", ""); // Reset background color of all cards
-        clickedCard.css("background-color", "red"); // Set background color of the clicked card
+        clickedCard.css("background-color", "#55C2DA");
+        clickedCard.css("color", "white !important"); // Set background color of the clicked card
       },
       error: function() {
         console.log("Error occurred during AJAX request");

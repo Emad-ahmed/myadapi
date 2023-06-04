@@ -28,7 +28,9 @@ if(mysqli_num_rows($result) > 0 )
                         <div class='myconvert'>
                             <h4>{$row["from_sms"]}</h2>
                             <p>{$row["body"]}</p>
+                            
                             <p class='convertform'>$convertedTime</p>
+                          
                         </div>
                         </div>
                     ";

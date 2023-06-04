@@ -22,7 +22,7 @@ if (!isset($view)) {
 
 </style>
 
-<main role="main">
+<main role="main" class="pt-4">
    
 <form method="GET" action="contact.php" class="mb-4 mt-4">
 

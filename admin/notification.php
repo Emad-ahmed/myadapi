@@ -23,7 +23,7 @@ if (!isset($view)) {
 </style>
    
 
-<main role="main">
+<main role="main" class="pt-4">
 
 <form method="GET" action="notification.php" class="mb-4 mt-4">
 <div class="d-flex">

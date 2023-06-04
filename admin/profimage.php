@@ -1,5 +1,6 @@
-<?php include('dashboard.php') ?>
 
+<?php include('dashboard.php') ?>
+<link rel="stylesheet" href="css/prof.css">
 <?php
 session_start();
 
@@ -15,92 +16,60 @@ if (!isset($view)) {
 ?>
 
 <style>
-    .profimager
+    .notification a
     {
-        width:200px;
-        height:200px;
-    }
-    #myTable
-    {
-       
-        width:80%;
-        text-align:center;
-    }
-    .profileimage a{
         background: black !important;
     }
+
 </style>
-
-
-
-    
-  
-
-<main role="main">
-<form method="GET" action="profimage.php" class="mb-4 mt-4 ">
-<div class="d-flex">
-    <a href="profimage.php" class="btn btn-all col-3 me-5">Profile Image</a>
-<select class="form-select" aria-label="Default select example" name="id" id="category" onchange="navigateToLink(this)">
    
-    <?php
+
+<main role="main" class="pt-4">
+
+    <div>
+    <ul class="gallery">
+        <?php
         include 'config.php';
-        $alldata = mysqli_query($conn, "SELECT * FROM `user`");
+        // Assuming you have a database connection established
+        // Fetch the first 6 images from the database
+        $query = "SELECT * FROM profimage";
+        $result = mysqli_query($conn, $query);
 
-        while ($row = mysqli_fetch_array($alldata)) {
-                echo "<option value='$row[id]'>$row[device_id]</option>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<li><img src='../$row[image]' /></li>";
         }
-    ?>
-</select>
-<button type="submit" class="btn btn-info me-4 ms-3">Search</button>
-</div>
-</form>
-<table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                    <th>Sno.</th>
-                    <th>Device Id</th>
-                    <th>Image</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            include 'config.php';
 
-            if(isset($_GET['id']))
-            {
-            $user_id = $_GET['id'];
-            $sql = "SELECT * FROM user, profimage where user.id = profimage.user_id AND profimage.user_id = '$user_id' ORDER BY profimage.id DESC";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>{$row['id']}</td>";
-                    echo "<td>{$row['device_id']}</td>";
-                    echo "<td><img src='../$row[image]' class='profimager'></td> ";
-                    
-                    echo "</tr>";
-                }
-            }
-            } else{
-                $sql = "SELECT * FROM user, profimage where user.id = profimage.user_id ORDER BY profimage.id DESC";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>{$row['id']}</td>";
-                        echo "<td>{$row['device_id']}</td>";
-                        echo "<td><img src='../$row[image]'></td> ";
-                       
-                        echo "</tr>";
-                    }
-                }
-            }
-
-            // Close the database connection
-            $conn->close();
-            ?>
-        </tbody>
-    </table>
+        // Close the database connection
+        mysqli_close($conn);
+        ?>
+         </ul>
+        </div>  
+        
+        <div class="more">Show more</div>
+        <div class="less">Show less</div>
   
-        <script src="js/datatable.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function () {
+            $('.gallery li:lt(3)').show();
+            $('.less').hide();
+            var items =  9;
+            var shown =  3;
+            $('.more').click(function () {
+                $('.less').show();
+                shown = $('.gallery li:visible').length+3;
+                if(shown< items) {
+                $('.gallery li:lt('+shown+')').show(300);
+                } else {
+                $('.gallery li:lt('+items+')').show(300);
+                $('.more').hide();
+                }
+            });
+            $('.less').click(function () {
+                $('.gallery li').not(':lt(3)').hide(300);
+                $('.more').show();
+                $('.less').hide();
+            });
+        });
+        </script>
 </main>
