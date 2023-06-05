@@ -54,6 +54,7 @@ if (!isset($view)) {
                     <th>Latitude</th>
                     <th>TimeStamp</th>
                     <th>Address</th>
+                    <th>Map</th>
             </tr>
         </thead>
         <tbody>
@@ -74,6 +75,7 @@ if (!isset($view)) {
                     echo "<td>{$row['lat']}</td>";
                     echo "<td>{$row['TimeStamp']}</td>";
                     echo "<td>{$row['Address']}</td>";
+                    echo "<td><a href='https://www.google.com/maps/search/?api=1&query={$row['lat']},{$row['long']}' class='viewon' target='_blank'>view on google</a></td>";
                     echo "</tr>";
                 }
             }
@@ -89,6 +91,7 @@ if (!isset($view)) {
                         echo "<td>{$row['lat']}</td>";
                         echo "<td>{$row['TimeStamp']}</td>";
                         echo "<td>{$row['Address']}</td>";
+                        echo "<td><a href='https://www.google.com/maps/search/?api=1&query={$row['lat']},{$row['long']}' class='viewon' target='_blank'>view on google</a></td>";
                         echo "</tr>";
                     }
                 }

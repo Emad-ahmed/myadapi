@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +32,7 @@
     <li class="smslog"><a href="smslog.php"><img src="img/sms.png" alt="" class="me-3">Sms Log</a></li>
     <li class="location"><a href="location.php"><img src="img/loc.png" alt="" class="me-3">Location</a></li>
     <li class="contact"><a href="contact.php"><img src="img/contact.png" alt="" class="me-3">Contact</a></li>
-    <li class="profileimage"><a href="profimage.php"><img src="img/image.png" alt="" class="me-3">Profile Image</a></li>
+    <li class="profileimage"><a href="profimage.php"><img src="img/image.png" alt="" class="me-3">Images</a></li>
     <li class="deviceinfo"><a href="deviceinfo.php"><img src="img/device.png" alt="" class="me-3">Device Info</a></li>
     <li class="notification"><a href="notification.php"><img src="img/bell.png" alt="" class="me-3">Notification</a></li>
 
@@ -47,16 +44,13 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
         
-
-
         $(document).ready(function() {
           $('#example').DataTable({
               "order": [[0, "desc"]]
            });
            
         });
-        
-        
+          
     </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

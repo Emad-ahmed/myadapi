@@ -1,9 +1,9 @@
 .gallery {
-  width: 330px;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
-.comic-content {width:600px;}
+.comic-content {width:100%;}
 .social-content {
     display: inline-block;
     position: relative;

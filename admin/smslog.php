@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
         overflow : auto !important;
     }
 
-    .col-lg-8
+    .col-lg-9
     {
         height:35rem !important;
         overflow : auto !important;
@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
 
 </style>
    
-<main role="main">
+<main role="main" class="pt-4">
 <!-- <form method="GET" action="smslog.php" class="mb-4 mt-4">
 
 <div class="d-flex">
@@ -117,9 +117,11 @@ if (isset($_GET['id'])) {
         </tbody>
     </table> -->
 
-
+    <a href="smslog.php" class='showms mt-5' id="showsms">Show All Sms</a>
     <div class="row pt-5">
+    
     <div class="col-lg-3">
+        
     <?php
     include 'config.php';
     $sql = "SELECT * FROM user  ORDER BY id DESC";
@@ -127,7 +129,7 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo "
-                <div class='card mysms mb-2' data-id ='{$row["id"]}' id='$row[name]' style='width: 100%;' id='myCard'>
+                <div class='card mysms mb-2 mt-3' data-id ='{$row["id"]}' id='$row[name]' style='width: 100%;' id='myCard'>
                     <div class='card-body'>
                         <h5 class='card-title mb-3'>$row[name]</h5>
                         <h6 class='card-subtitle mb-2 text-body-secondary'>$row[device_id]</h6>
@@ -140,7 +142,7 @@ if (isset($_GET['id'])) {
     ?>
 </div>
 
-        <div class="col-lg-8">
+        <div class="col-lg-9">
         <div class="col-12"> 
                 <div id="showdata">
                 </div>
@@ -189,7 +191,9 @@ if (isset($_GET['id'])) {
     var student_id = $(this).data("id");
     $("#mydata").css("display", "none");
     var clickedCard = $(this); // Store the clicked card element
-    
+    $(".showms").css('background-color', 'white');
+    $(".showms").css('border', '1px solid #145B75');
+    $(".showms").css('color', '#145B75');
     $.ajax({
       type: "GET",
       url: "showsmslog.php",
@@ -199,6 +203,8 @@ if (isset($_GET['id'])) {
         $(".mysms").css("background-color", ""); // Reset background color of all cards
         clickedCard.css("background-color", "#55C2DA");
         clickedCard.css("color", "white !important"); // Set background color of the clicked card
+        $(".showsms").css('background-color', 'red !important');
+        window.scrollTo(0, 0);
       },
       error: function() {
         console.log("Error occurred during AJAX request");

@@ -16,7 +16,7 @@ if (!isset($view)) {
 ?>
 
 <style>
-    .notification a
+    .profileimage a
     {
         background: black !important;
     }

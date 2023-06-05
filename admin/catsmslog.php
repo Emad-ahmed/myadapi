@@ -1,11 +1,10 @@
 <?php include('dashboard.php') ?>
 
+
+
 <?php
 session_start();
-
-
 $view = $_SESSION['admin'];
-
 
 if (!isset($view)) {
     echo "<script>location.href = '../login.php'</script>";
@@ -13,10 +12,7 @@ if (!isset($view)) {
 
 if (isset($_GET['id'])) {
     $clickedCardId = $_GET['id'];
-
 }
-
-
 ?>
 
 <style>
@@ -30,10 +26,9 @@ if (isset($_GET['id'])) {
         overflow : auto !important;
     }
 
-    
-
 </style>
-   
+
+
 <main role="main">
 <!-- <form method="GET" action="smslog.php" class="mb-4 mt-4">
 
