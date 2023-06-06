@@ -96,14 +96,14 @@ if (!isset($view)) {
         </tbody>
     </table> -->
 
-    <a href="contact.php" class='showms mt-5' id="showsms">Show All Sms</a>
+    <a href="contact.php" class='showms mt-5' id="showsms">Show All Contact</a>
     <div class="row pt-5">
     
     <div class="col-lg-3">
         
     <?php
     include 'config.php';
-    $sql = "SELECT * FROM user  ORDER BY id DESC";
+    $sql = "SELECT * FROM contact  ORDER BY id DESC";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -111,8 +111,6 @@ if (!isset($view)) {
                 <div class='card mysms mb-2 mt-3' data-id ='{$row["id"]}' id='$row[name]' style='width: 100%;' id='myCard'>
                     <div class='card-body'>
                         <h5 class='card-title mb-3'>$row[name]</h5>
-                        <h6 class='card-subtitle mb-2 text-body-secondary'>$row[device_id]</h6>
-                        <p class='card-text'></p>
                     </div>
                 </div>
             ";
@@ -134,20 +132,16 @@ if (!isset($view)) {
                         if ($result->num_rows > 0) {
                         while($row=mysqli_fetch_assoc($result))
                         {
-                            $inputTime = $row["send_time"];
-                            $convertedTime = date('M j, Y g:i A', strtotime($inputTime));
+                           
                             echo "
-                             <div class='formsms p-3 d-flex mb-4'>
+                             <div class='formsms p-3 text-center mb-4'>
                                 <div class='imgshow'>
                                     <img src='img/profile2.png' alt=''> 
+                                    <h6>{$row["name"]}</h6>
                                 </div>
 
                                 <div class='myconvert'>
-                                    <h4>{$row["number"]}</h2>
-                                    <p>{$row["body"]}</p>
-                                    
-                                    <p class='convertform'>$convertedTime</p>
-                                    
+                                    <h4>Numbers {$row["number"]}</h2>
                                 </div>
                                 </div>
                             ";
